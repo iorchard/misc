@@ -41,10 +41,11 @@ fi
 if [ "${OUTFILE}" == "" ]
 then
     DIR="."
-    OUTFILE=$(basename ${INFILE} | cut -d'.' -f1)
 else
     DIR=$(dirname ${OUTFILE})
 fi
+OUTFILE=$(basename ${INFILE} | cut -d'.' -f1)
+
 if [ ! -d "${DIR}" ]
 then
     echo "Warn) No such directory: ${DIR}."
