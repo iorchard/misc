@@ -3,19 +3,24 @@
 #
 
 USAGE() {
-    echo "Usage: $0 -f <infile> -t [pdf|docx|...] [-o <outfile>]
+    echo "Usage: $0 [-h] -f <infile> -t [pdf|docx|...] [-o <outfile>]
         Description
+            -h: help message
             -f: input file (should be rst format.)
-            -t: output file type. (see 'man pandoc')
+            -t: output file type (see 'man pandoc')
             -o: output file full path (default: ./<infile>.<type>)
 	"
     exit 1
 }
 
 # Check arguments.
-while getopts f:t:o: opt
+while getopts hf:t:o: opt
 do
     case "${opt}" in
+        h)
+            USAGE
+            exit 0
+            ;;
         f)
             INFILE="${OPTARG}"
             ;;

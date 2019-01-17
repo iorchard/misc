@@ -3,19 +3,24 @@
 #
 
 USAGE() {
-    echo "Usage: $0 [-n <num_files>] [-d <dir>] [-i <interval_sec>]
+    echo "Usage: $0 [-h] [-n <num_files>] [-d <dir>] [-i <interval_sec>]
 	Description
-        -n: the number of files to creates. (default: 4)
-		-d: the directory to create files. (default: current directory)
-		-i: the interval of creating files in seconds. (default: 0)
+        -h: help message
+        -n: the number of files to creates (default: 4)
+        -d: the directory to create files (default: current directory)
+        -i: the interval of creating files in seconds (default: 0)
 	"
     exit 1
 }
 
 # Check arguments.
-while getopts d:n:i: opt
+while getopts hd:n:i: opt
 do
     case "${opt}" in
+        h)
+            USAGE
+            exit 0
+            ;;
         d)
             DIR="${OPTARG}"
             ;;

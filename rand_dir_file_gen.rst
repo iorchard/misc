@@ -22,13 +22,19 @@ How to use
 
 Usage)::
 
-	./rand_dir_file_gen.sh [-n <num_files>] [-d <dir>] [-i <interval_sec>]
+	./rand_dir_file_gen.sh [-h] [-n <num_files>] [-d <dir>] [-i <interval_sec>]
         Description
-            -n: the number of files to creates. (default: 4)
-            -d: the directory to create files. (default: current directory)
-            -i: the interval of creating files in seconds. (default: 0)
+            -h: help message
+            -n: the number of files to creates (default: 4)
+            -d: the directory to create files (default: current directory)
+            -i: the interval of creating files in seconds (default: 0)
 
 Here are some examples.
+
+Create 4 random files in the current directory.
+In this case, no option needs to be specified.::
+
+     $ ./rand_dir_file_gen.sh 
 
 Create 10 random files in the current directory.::
 

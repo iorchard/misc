@@ -16,7 +16,13 @@ How to use
 
 Usage)::
 
-    Usage: ./rst2what.sh -f <infile> -t [pdf|docx|...] [-o <outfile>] 
+    Usage: ./rst2what.sh [-h] -f <infile> -t [pdf|docx|...] [-o <outfile>] 
+        Description
+            -h: help message
+            -f: input file (should be rst format.)
+            -t: output file type (see 'man pandoc')
+            -o: output file full path (default: ./<infile>.<type>)
+
 
 Here are some examples.
 
