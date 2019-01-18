@@ -4,12 +4,12 @@
 
 USAGE() {
     echo "Usage: $0 [-h] [-n <num_files>] [-d <dir>] [-i <interval_sec>]
-	Description
+    Description
         -h: help message
-        -n: the number of files to creates (default: 4)
+        -n: the number of files to create (default: 4)
         -d: the directory to create files (default: current directory)
         -i: the interval of creating files in seconds (default: 0)
-	"
+    "
     exit 1
 }
 
@@ -45,7 +45,7 @@ INTERVAL=${INTERVAL:-0}
 if [[ ! -d "${DIR}" ]]
 then
     echo "Warn) No such directory: ${DIR}. Use the current directory."
-	DIR="."
+    DIR="."
 fi
 if [ ${NUM} -lt 4 ]
 then
@@ -58,17 +58,18 @@ echo "Info) The chosen number of subdirs is ${NUM_SUBDIRS}."
 DIRS[0]=${DIR}
 for (( i=1; i<=${NUM_SUBDIRS}; i++))
 do
-	DIRS[i]=${DIR}/$(basename $(mktemp -d -u))
+    DIRS[i]=${DIR}/$(basename $(mktemp -d -u))
 done
 
 for (( c=1; c<=${NUM}; c++))
 do
-	i=$(($c%$NUM_SUBDIRS))
-	echo "Creating a file ${DIRS[$i]}/rfile.${c}."
-	if [ ! -d ${DIRS[$c]} ]
-	then
-		mkdir -p ${DIRS[$c]}
-	fi
-	dd bs=512 count=$RANDOM skip=$RANDOM </dev/urandom >${DIRS[$i]}/rfile.${c}
-	sleep ${INTERVAL}
+    i=$(($c%$NUM_SUBDIRS))
+    F=$(basename $(mktemp -d -u))
+    echo "Creating a file ${DIRS[$i]}/${F}.${c}."
+    if [ ! -d ${DIRS[$c]} ]
+    then
+        mkdir -p ${DIRS[$c]}
+    fi
+    dd bs=512 count=$RANDOM skip=$RANDOM </dev/urandom >${DIRS[$i]}/${F}.${c}
+    sleep ${INTERVAL}
 done

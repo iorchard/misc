@@ -9,7 +9,7 @@ USAGE() {
             -f: input file (should be rst format.)
             -t: output file type (see 'man pandoc')
             -o: output file full path (default: ./<infile>.<type>)
-	"
+    "
     exit 1
 }
 
