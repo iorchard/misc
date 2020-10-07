@@ -6,8 +6,7 @@ This is a repo for trivial things while we work.
 rbd_loc.sh
 ------------
 
-Find out which osds are used for the rbd image.
-
+List osds in which the objects of rbd image are.
 
 rst2what.sh
 ------------
