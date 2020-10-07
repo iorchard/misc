@@ -23,7 +23,6 @@ do
   IFS=',' read -r -a tmp_arr <<< "$out"
   for i in ${tmp_arr[@]}; do
     if [[ ! "${osds[@]}" =~ "${i}" ]]; then
-      echo "not exist. add it to osds."
       osds+=(${i})
     fi
   done
@@ -31,5 +30,13 @@ do
   echo "$n/$c objects processed."
 done
 
-echo "osds ${2} objects are in: ${osds[@]}"
+# sort the osds array.
+sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
+# array to string
+s=${sorted[@]}
+# sort the osds array.
+sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
+header="%8s %36s %30s"
+printf "$header\n" "Pool" "RBD image" "OSDs"
+printf "$header\n" "$1" "$2" "$s"
 
