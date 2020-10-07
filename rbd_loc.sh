@@ -35,8 +35,6 @@ done | pv -ptels $c > /dev/null
 sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
 # array to string
 s=${sorted[@]}
-# sort the osds array.
-sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
 header="%8s %15s %40s"
 printf "$header\n" "Pool" "RBD image" "OSDs"
 printf "$header\n" "$1" "${2:0:5}..${2:(-5)}" "${s// /|} (${#sorted[@]})"
