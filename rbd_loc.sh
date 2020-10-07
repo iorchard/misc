@@ -29,7 +29,7 @@ do
   done
   n=$(($n+1))
   echo "$n"
-done | pv -ptes 100 > /dev/null
+done | pv -ptels $c > /dev/null
 
 # sort the osds array.
 sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
