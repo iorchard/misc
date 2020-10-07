@@ -1,12 +1,10 @@
 #!/bin/bash
-
-# USAGE
-# ./rbd-loc <pool> <image>
-
+# Modified from https://ceph.io/geen-categorie/ceph-rbd-objects-placement/
+# by Heechul Kim.
 
 if [ -z ${1} ] || [ -z ${2} ];
 then
-    echo "USAGE: ./rbd-loc <pool> <image>"
+    echo "USAGE: ./rbd_loc.sh <pool> <image>"
     exit 1
 fi
 
