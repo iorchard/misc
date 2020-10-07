@@ -3,6 +3,12 @@ misc
 
 This is a repo for trivial things while we work.
 
+rbd_loc.sh
+------------
+
+Find out which osds are used for the rbd image.
+
+
 rst2what.sh
 ------------
 
