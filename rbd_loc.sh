@@ -1,7 +1,8 @@
 #!/bin/bash
 # Modified from https://ceph.io/geen-categorie/ceph-rbd-objects-placement/
 # by Heechul Kim.
-
+# prerequisites: pv package (yum install pv or apt install pv)
+# 
 if [ -z ${1} ] || [ -z ${2} ];
 then
     echo "USAGE: ./rbd_loc.sh <pool> <image>"
@@ -27,8 +28,8 @@ do
     fi
   done
   n=$(($n+1))
-  echo "$n/$c objects processed."
-done
+  echo "$n"
+done | pv -ptes 100 > /dev/null
 
 # sort the osds array.
 sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
@@ -36,7 +37,6 @@ sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
 s=${sorted[@]}
 # sort the osds array.
 sorted=($(printf "%s\n" "${osds[@]}" | sort -n))
-header="%8s %36s %30s"
+header="%8s %15s %40s"
 printf "$header\n" "Pool" "RBD image" "OSDs"
-printf "$header\n" "$1" "$2" "$s"
-
+printf "$header\n" "$1" "${2:0:5}..${2:(-5)}" "${s// /|} (${#sorted[@]})"
