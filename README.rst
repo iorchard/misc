@@ -3,6 +3,23 @@ misc
 
 This is a repo for trivial things while we work.
 
+k8s_v1.12.3_kubelet_pleg_deadlock.patch
+-----------------------------------------
+
+This is a patch file for kubelet PLEG deadlock bug in kubernetes version 1.12.3.
+
+Go to kubernetes v1.12.3 source and patch this file.::
+
+   $ cd /path/to/kubernetes-1.12.3
+   $ patch -p1 < /path/to/this/patch/file
+   patching file pkg/kubelet/metrics/metrics.go
+   patching file pkg/kubelet/pleg/generic.go
+   patching file pkg/kubelet/pleg/generic_test.go
+
+Build the patched kubernetes source.::
+
+   $ make quick-release
+
 rbd_loc.sh
 ------------
 
