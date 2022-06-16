@@ -3,6 +3,14 @@ misc
 
 This is a repo for trivial things while we work.
 
+smtp_tls_send.py
+------------------
+
+This is a python script to test SMTP TLS(port 587) using smtplib.::
+
+   $ python3 smtp_tls_send.py -s <smtp_server> -u <username>
+   Enter user's password: 
+
 k8s_v1.12.3_kubelet_pleg_deadlock.patch
 -----------------------------------------
 
