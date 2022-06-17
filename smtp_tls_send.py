@@ -4,12 +4,19 @@ import getopt
 import getpass
 import smtplib
 
+def usage():
+    print('{} -s <server> -u <user>'.format(sys.argv[0]))
+    sys.exit(1)
+
 def main(argv):
+    if len(argv) != 4:
+        usage()
+        sys.exit(1)
+
     try:
         opts, args = getopt.getopt(argv, "hs:u:", ["server=","user="])
     except getopt.GetoptError:
-        print('smtp_tls_send.py -s <server> -u <user>')
-        sys.exit(1)
+        usage()
     for opt, arg in opts:
         if opt == '-h':
             print('smtp_tls_send.py -s <server> -u <user>')
@@ -29,6 +36,7 @@ def main(argv):
 
     # initialize connection to our email server, we will use Outlook here
     smtp = smtplib.SMTP(s_server, port=i_port)
+    smtp.set_debuglevel(True)
 
     smtp.ehlo()  # send the extended hello to our server
     smtp.starttls()  # tell server we want to communicate with TLS encryption
