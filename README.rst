@@ -49,3 +49,13 @@ random content.
 
 For more information, refer to rand_dir_file_gen.rst.
 
+
+diskhog.sh
+---------------------
+
+Here is a script that takes a directory as input and prints the top 20 largest files in that directory, sorted by size in descending order. 
+
+I have added comments to the script for detailed explanation. 
+
+Please review the comments for more information.
+
