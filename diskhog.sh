@@ -16,4 +16,4 @@ if [ ! -d "$directory" ]; then # 만약 디렉토리 변수가 디렉토리가 �
 fi  # 세번째 if문 끝
  
 find "$directory" -type f -exec du -sh {} + | sort -rh | head -n 20
-# 디렉토리 변수를 찾는다 / 파일을 찾는 조건(type f) / 파일 용량 출력(du -sh) / 파일 용량 역순 정렬(sort -rh) / 상위 20개만(head)
+# 디렉토리 변수를 찾는다 / 파일을 찾는 조건(type f) / 파일 크기 human-readable 형식(1K,1M) 출력 (-exec du -sh {} +) / 파일 용량 역순 정렬(sort -rh) / 상위 20개만(head)
